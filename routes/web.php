@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/','pages.main');
+Route::get('/', [\App\Http\Controllers\ReportController::class, 'index']);
 Route::view('/profile','pages.profile');
 Route::view('/registration','pages.registration');
 Route::view('/abstract','abstract');

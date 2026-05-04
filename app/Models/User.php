@@ -7,6 +7,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -29,4 +30,30 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function expenseCategoryGroups(): HasMany
+    {
+        return $this->hasMany(ExpenseCategoryGroup::class);
+    }
+
+    public function incomePlans()
+    {
+        return $this->hasMany(IncomePlan::class);
+    }
+
+    public function incomeFacts()
+    {
+        return $this->hasMany(IncomeFact::class);
+    }
+
+    public function expensePlans()
+    {
+        return $this->hasMany(ExpensePlan::class);
+    }
+
+    public function expenseFacts()
+    {
+        return $this->hasMany(ExpenseFact::class);
+    }
+
 }
